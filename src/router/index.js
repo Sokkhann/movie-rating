@@ -1,11 +1,11 @@
 // src/router/index.js
 import { createRouter, createWebHistory } from 'vue-router'
-import CardList from '@/views/card/CardList.vue'
 import CardDetail from '@/views/card/CardDetail.vue'
 import AboutPage from '@/views/AboutPage.vue'
 import ContactPage from '@/views/ContactPage.vue'
 import HomePage from '@/views/HomePage.vue'
 import CategoryPage from '@/views/CategoryPage.vue'
+import CardCagegoryList from '@/views/card/CardCagegoryList.vue'
 
 const routes = [
   {
@@ -19,9 +19,9 @@ const routes = [
     component: CardDetail,
   },
   {
-    path: '/movie', // Dynamic route for card details
-    name: 'Movie',
-    component: CardList,
+    path: '/favorite', // Dynamic route for card details
+    name: 'Favorite',
+    component: CardCagegoryList,
   },
   {
     path: '/about',

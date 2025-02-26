@@ -9,8 +9,8 @@
 
     <!-- Navigation Links -->
     <n-space>
-      <router-link to="/movie" custom v-slot="{ navigate }">
-        <n-button text @click="navigate">Products</n-button>
+      <router-link to="/favorite" custom v-slot="{ navigate }">
+        <n-button text @click="navigate">Favorite</n-button>
       </router-link>
       <router-link to="/about" custom v-slot="{ navigate }">
         <n-button text @click="navigate">About</n-button>
