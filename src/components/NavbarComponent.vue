@@ -12,11 +12,8 @@
       <router-link to="/favorite" custom v-slot="{ navigate }">
         <n-button text @click="navigate">Favorite</n-button>
       </router-link>
-      <router-link to="/about" custom v-slot="{ navigate }">
-        <n-button text @click="navigate">About</n-button>
-      </router-link>
-      <router-link to="/contact" custom v-slot="{ navigate }">
-        <n-button text @click="navigate">Contact</n-button>
+      <router-link to="/login" custom v-slot="{ navigate }">
+        <n-button text @click="navigate">Create Account</n-button>
       </router-link>
     </n-space>
   </n-layout-header>

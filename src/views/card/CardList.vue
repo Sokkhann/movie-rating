@@ -3,7 +3,7 @@
     <n-scrollbar x-scrollable>
       <div class="scroll-container">
         <div class="card-container">
-          <router-link v-for="card in movies" :key="card.id" :to="`/card/${card.id}`">
+          <router-link v-for="card in movies" :key="card.id" :to="`/movie/${card.id}`">
             <CardComponent
               :id="card.id"
               :title="card.title"

@@ -1,6 +1,6 @@
 <template>
   <div class="movie-detail" v-if="movie">
-    <div class="movie-banner">
+    <div class="movie-banner" style="background-color: blanchedalmond">
       <img :src="movie.image" alt="Movie Background" class="banner-image" />
       <div class="overlay"></div>
       <div class="movie-info">
@@ -19,25 +19,22 @@
             Watch Trailer
           </button>
 
-          <button @click="watchMovie" class="watch-button">Review</button>
+          <!-- <button @click="watchMovie" class="watch-button">Review</button> -->
           <button @click="rateMovie" class="rate-button">Rating</button>
 
           <!-- save or add to favorite -->
-          <font-awesome-icon
-            :icon="isSolid ? 'fa-solid fa-bookmark' : 'fa-regular fa-bookmark'"
-            size="2x"
-            color="yellow"
-            @click="toggleBookmark"
-          />
+          <FavoriteButton />
         </div>
       </div>
+
+      <ReviewComponent />
     </div>
 
     <!-- Modal for Rating -->
     <div v-if="isRatingModalOpen" class="modal-overlay" @click="closeRatingModal">
       <div class="modal-content" @click.stop>
         <RatingComponent v-model="rating" :initialRating="rating" :maxRating="5" />
-        <button @click="closeRatingModal" class="close-button">Close</button>
+        <font-awesome-icon @click="closeRatingModal" class="close-button" icon="xmark" />
       </div>
     </div>
 
@@ -52,7 +49,7 @@
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         ></iframe>
-        <button @click="closeTrailerModal" class="close-button">Close</button>
+        <font-awesome-icon @click="closeTrailerModal" class="close-button" icon="xmark" />
       </div>
     </div>
   </div>
@@ -63,6 +60,8 @@ import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import axios from 'axios'
 import RatingComponent from '@/components/RatingComponent.vue'
+import ReviewComponent from '../ReviewComponent.vue'
+import FavoriteButton from '@/components/FavoriteButton.vue'
 
 const route = useRoute()
 const movie = ref(null)
@@ -126,13 +125,6 @@ const openTrailerModal = () => {
 // Close the trailer modal
 const closeTrailerModal = () => {
   isModalOpen.value = false
-}
-
-const isSolid = ref(false) // Initially set to regular bookmark
-
-// Function to toggle between solid and regular
-const toggleBookmark = () => {
-  isSolid.value = !isSolid.value
 }
 </script>
 
@@ -286,7 +278,7 @@ const toggleBookmark = () => {
   right: 10px;
   background-color: red;
   color: white;
-  font-size: 16px;
+  font-size: 1.2rem;
   border: none;
   padding: 10px;
   cursor: pointer;
