@@ -5,7 +5,7 @@
         style="text-decoration: none"
         v-for="card in movies"
         :key="card.id"
-        :to="`/card/${card.id}`"
+        :to="`/movie/${card.id}`"
       >
         <CardCategory
           :id="card.id"
