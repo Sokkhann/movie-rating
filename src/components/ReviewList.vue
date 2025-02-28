@@ -74,17 +74,20 @@ export default {
     }
 
     // Function to load reviews for a specific item
+    // Function to load reviews for a specific item
     const loadReviews = async (itemId) => {
       try {
         const fetchedReviews = await fetchReviews(itemId)
         // Log the raw response for debugging
         console.log('Fetched Reviews:', fetchedReviews)
 
-        // Format the createdAt date for each review
-        reviews.value = fetchedReviews.map((review) => ({
-          ...review,
-          date: formatDate(review.createAt), // Format the date here
-        }))
+        // Sort reviews by createdAt in descending order (latest first)
+        reviews.value = fetchedReviews
+          .map((review) => ({
+            ...review,
+            date: formatDate(review.createAt), // Format the date here
+          }))
+          .sort((a, b) => new Date(b.createAt) - new Date(a.createAt)) // Sort by createdAt
       } catch (error) {
         console.error('Failed to load reviews:', error)
       }
