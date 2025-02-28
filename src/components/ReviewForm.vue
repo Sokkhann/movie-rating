@@ -42,6 +42,7 @@ import { ref, computed } from 'vue'
 import { submitReview } from '@/api/reviewApi'
 import { useRoute } from 'vue-router'
 import { getUserId } from '@/utils/userUtils'
+const emit = defineEmits(['review-added'])
 
 const route = useRoute()
 const reviewText = ref('')
@@ -110,6 +111,7 @@ const handleAddReview = async () => {
     // Clear the review text box
     reviewText.value = ''
 
+    emit('review-added', newReview)
     // Show success alert
     showAlertMessage('Success', 'success', 'Your review has been submitted successfully!')
   } catch (error) {
